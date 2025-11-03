@@ -1,0 +1,31 @@
+ .invoice-card {
+          box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+          border: none;
+        }
+        
+        .invoice-table {
+          margin-bottom: 0;
+        }
+        
+        .invoice-table th {
+          background-color: #f8f9fa;
+          font-weight: 600;
+          border-color: #dee2e6;
+        }
+        
+        .invoice-table td {
+          vertical-align: middle;
+          border-color: #dee2e6;
+        }
+        
+        .badge {
+          font-size: 0.75rem;
+        }
+        
+        .table-success td {
+          background-color: #d1ecf1 !important;
+        }
+        
+        .fs-5 {
+          font-size: 1.25rem !important;
+        }

@@ -1,0 +1,653 @@
+@import "../scss/icons.scss";
+@import "../scss/config/default/bootstrap.scss";
+@import "../scss/config/default/app.scss";
+@import "../scss/config/default/custom.scss";
+@import"./shepherd.css";
+@import "./mermaid.min.css";
+
+
+
+
+
+//RTL 
+// @import "../scss/rtl/components-rtl";
+// @import "../scss/rtl/layouts-rtl";
+// @import "../scss/rtl/plugins-rtl";
+// @import "../scss/rtl/pages-rtl";
+
+
+//Rigthsidebar offcanvas
+.offcanvas-header-dark {
+  .btn-close {
+    filter: invert(1) grayscale(100%) brightness(200%);
+  }
+}
+
+body {
+  * {
+    outline: none;
+  }
+}
+
+//calendrier
+//reduxcalendrier
+/* Container principal du calendrier */
+.calendar-container {
+  margin: 20px auto;
+  width: 80%;
+  background-color: #f9f9f9;
+  padding: 20px;
+  border-radius: 8px;
+  margin: 100px auto;
+}
+
+/* Header du calendrier pour les jours */
+.calendar-header {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 10px;
+  font-weight: bold;
+  background-color: #333;
+  color: white;
+  padding: 10px;
+  border-radius: 8px 8px 0 0;
+}
+
+.header-item {
+  flex: 1;
+  text-align: center;
+  padding: 10px;
+  color: white;
+  border-right: none;
+  border-left: none;
+}
+
+/* Corps du calendrier */
+.calendar-body .row {
+  display: flex;
+  justify-content: center;
+  border-bottom: 1px solid #ccc;
+}
+
+.cell {
+  flex: 1;
+  text-align: center;
+  padding: 15px;
+  border-right: 1px solid #ccc;
+  font-size: 14px;
+  background-color: #fff;
+}
+
+.cell:hover {
+  background-color: #f5f5f5;
+  cursor: pointer;
+}
+
+.cell:last-child {
+  border-right: none;
+}
+
+.car-cell {
+  background-color: #d3d3d3; /* Couleur plus douce */
+  font-weight: bold;
+  color: #333;
+}
+
+.cell:hover {
+  background-color: #f5f5f5;
+  cursor: pointer;
+}
+
+/* Maintenir le style des inputs de date */
+.date-inputs {
+  display: flex;
+  justify-content: center;
+  margin: 100px 0;
+  width: 100%;
+  background-color: #fff;
+  padding: 10px 0;
+  border-bottom: 1px solid #ccc;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.date-input-group {
+  margin: 0 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.date-input-group label {
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+.date-inputs input {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  width: 150px;
+}
+
+.date-inputs button {
+  margin-left: 20px;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  background-color: #f52727;
+  color: #fff;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.date-inputs button:hover {
+  background-color: #0056b3;
+}
+
+/* Conteneur pour les tables avec barre de défilement horizontal */
+.calendar-table-wrapper {
+  overflow-x: auto;
+}
+
+.calendar-table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+.calendar-table th,
+.calendar-table td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: center;
+}
+
+.calendar-table th {
+  background-color: #f4f4f4;
+}
+
+.calendar-table td {
+  cursor: pointer;
+}
+
+.calendar-table td:hover {
+  opacity: 0.8;
+}
+
+/* Modification pour rendre la première colonne (noms des voitures) sticky */
+.calendar-table td:first-child,
+.calendar-table th:first-child {
+  position: sticky;
+  left: -10px;
+  background-color: #f9f9f9; /* Conserver un fond pour éviter la transparence */
+  z-index: 2; /* Assurez-vous que la première colonne soit au-dessus des autres cellules */
+  font-weight: bold; /* Garder les noms des voitures en gras */
+}
+
+/* Ajout d'une bordure pour mieux définir la colonne sticky */
+.calendar-table th:first-child {
+  border-right: 2px solid #ddd;
+}
+
+.calendar-table td:first-child {
+  border-right: 2px solid #ddd;
+}
+
+/* Hauteur maximale pour le wrapper du calendrier et ajout de barre de défilement */
+.calendar-wrapper {
+  max-height: 100px; /* Ajustez cette valeur selon vos besoins */
+  overflow-y: auto; /* Ajoute une barre de défilement verticale */
+}
+
+
+
+//pagereservation
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  position: relative;
+}
+
+.close-button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: none;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+
+
+//login
+.auth-page-wrapper {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(to right, #6a11cb, #2575fc);
+}
+
+.auth-logo img {
+  max-height: 80px;
+}
+
+.card {
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.btn-success {
+  background-color: #46cf51;
+  border-color: #ffffff;
+  transition: background-color 0.3s ease;
+}
+
+// .btn-success:hover {
+//   background-color: #f12929;
+//   border-color: #dd4055;
+// }
+
+.form-control {
+  border-radius: 5px;
+  padding: 10px;
+  font-size: 1.1rem;
+}
+
+.form-check-label {
+  font-size: 0.9rem;
+}
+
+/* Arrière-plan global avec gradient */
+.auth-page-wrapper {
+  background: linear-gradient(135deg, #6a11cb, #2575fc);
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Style de la carte */
+.card {
+  border-radius: 10px;
+  box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.15);
+  padding: 20px;
+}
+
+/* Texte d'accueil */
+.text-primary {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.text-muted {
+  font-size: 14px;
+  color: #6c757d !important;
+}
+
+/* Champs de formulaire */
+.form-control {
+  padding: 15px;
+  font-size: 16px;
+  border-radius: 8px;
+  border: 1px solid #ced4da;
+  transition: all 0.3s ease;
+}
+
+/* Focus sur les champs de formulaire */
+.form-control:focus {
+  border-color: #2575fc;
+  box-shadow: 0 0 8px rgba(37, 117, 252, 0.5);
+  outline: none;
+}
+
+/* Bouton de soumission */
+// .btn-success {
+//   background-color: #28a745;
+//   border: none;
+//   padding: 12px 0;
+//   font-size: 18px;
+//   border-radius: 8px;
+//   transition: background-color 0.3s ease;
+// }
+
+/* Transition au survol du bouton */
+// .btn-success:hover {
+//   background-color: #218838;
+// }
+
+/* Liens et texte d'aide */
+a.text-muted {
+  font-size: 14px;
+  color: #6c757d;
+  text-decoration: none;
+}
+
+a.text-muted:hover {
+  color: #2575fc;
+  text-decoration: underline;
+}
+
+/* Texte de bas de page */
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  text-align: center;
+  padding: 10px 0;
+  color: #fff;
+  background: transparent;
+}
+
+
+
+
+// //Calendar
+
+//css header 
+
+//resev
+.reservation-status-filters button {
+  margin-right: 10px;
+  padding: 8px 16px;
+  border: none;
+  background-color: #f0f0f0;
+  cursor: pointer;
+}
+
+.reservation-status-filters button.active {
+  background-color: #007bff;
+  color: white;
+}
+
+.table-card .action-btn {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+}
+//
+.fc-direction-ltr .fc-daygrid-event.fc-event-end,
+.fc-direction-rtl .fc-daygrid-event.fc-event-start {
+  padding: 5px !important;
+  font-size: 12px !important;
+  margin-right: 2px;
+}
+
+.fc-event {
+  border: none !important;
+}
+
+@include media-breakpoint-down(sm) {
+  .fc-toolbar {
+    display: block !important;
+    text-align: center;
+
+    .fc-left,
+    .fc-right,
+    .fc-center {
+      float: none;
+      display: block;
+      clear: both;
+      margin: 10px 0;
+    }
+  }
+
+  .fc {
+    .fc-toolbar {
+      >* {
+        >* {
+          float: none;
+        }
+      }
+    }
+  }
+
+  .fc-today-button {
+    display: none;
+  }
+}
+
+.flatpickr-calendar.open {
+  z-index: 1090 !important;
+}
+
+.upcoming-scheduled .flatpickr-input[readonly] {
+  display: none;
+}
+
+.ql-container.ql-snow {
+  height: 250px;
+}
+
+.rangeslider-horizontal .rangeslider__fill {
+  background-color: #405189 !important;
+}
+
+// .Toastify__toast {
+//   min-height: 43px !important;
+//   max-height: 43px !important;
+// }
+
+@each $color,
+$value in $theme-colors {
+  .simplebar-track-#{$color} {
+    .simplebar-scrollbar:before {
+      background: $value  !important;
+    }
+  }
+}
+
+// chat
+.chat-conversation .chat-list .message-box-drop {
+  .nav-btn {
+    font-size: 18px;
+    padding: 4px;
+    color: $gray-600;
+  }
+}
+
+.chatwidgets {
+  height: 250px !important;
+}
+
+[data-layout="horizontal"] .chat-conversation{
+  &.chatwidgets {
+    height: 250px !important;
+  }
+}
+
+// authentication
+
+#tsparticles {
+  canvas {
+    position: absolute !important;
+  }
+}
+
+.alert-msg-show {
+  right: 24px;
+  top: 40px;
+  z-index: 1005;
+}
+
+// Emoji Picker
+
+.pickerEmoji {
+  position: absolute;
+  bottom: -50px;
+  left: 10%;
+  transform: translateX(-50%);
+}
+
+.Toastify {
+  .Toastify__toast {
+    min-height: 43px;
+  }
+
+  .Toastify__close-button {
+    top: 6px;
+  }
+
+  .Toastify__close-button--light {
+    color: $light;
+  }
+}
+
+// Tranfer List
+
+.rdl-filter, .rdl-control{
+  background-color: $input-bg;
+  border: 1px solid $input-border-color !important;
+  color: $input-color !important;
+}
+
+.rdl-move{
+  background: var(--#{$prefix}light) !important;
+  border: 1px solid var(--#{$prefix}light) !important;
+  color: var(--#{$prefix}body-color) !important;
+}
+
+.react-dual-listbox {
+  input:disabled, select:disabled{
+    background-color: $input-disabled-bg !important;
+    border: 1px solid $input-border-color !important;
+  }
+}
+
+.css-26l3qy-menu{
+  background-color: var(--#{$prefix}gray-200) !important;
+  border-color: var(--#{$prefix}border-color) !important;
+}
+
+.css-1n7v3ny-option{
+  background-color: var(--#{$prefix}gray-300) !important;
+  border-color: var(--#{$prefix}border-color) !important;
+}
+
+
+
+//datatables
+.kbunWL, .ddeqMG {
+  .cFDtZf, .efrTRK {
+      color: $table-color;
+  }
+  
+  :is(.kdYplh, .dUdLgu) {
+      background-color: var(--#{$prefix}secondary-bg);
+      border-bottom-color: var(--#{$prefix}border-color);
+  }
+  
+  .dUdLgu {
+      color: $table-color;
+      &:not(:last-of-type) {
+          border-bottom-color: var(--#{$prefix}border-color);
+      }
+  }
+}
+
+.card-body {
+  .fjmwMg {
+      color: $table-color;
+      background-color: var(--#{$prefix}secondary-bg);
+      border-top-color: var(--#{$prefix}border-color);
+      
+      .flbsZw{
+          color: $table-color;
+          fill: $table-color;
+          &:disabled{
+              color: var(--#{$prefix}tertiary-color);
+              fill: var(--#{$prefix}tertiary-color);
+          }
+      }
+  }
+}
+
+//react select
+.css-b62m3t-container{
+  .css-13cymwt-control {
+      background-color: var(--#{$prefix}secondary-bg);
+      color: var(--#{$prefix}body-color);
+      border-color: var(--#{$prefix}border-color);
+      &:hover, &:focus {
+          border-color: var(--#{$prefix}primary);
+      }
+      
+      .css-1p3m7a8-multiValue {
+          color: var(--#{$prefix}white);
+          background-color: var(--#{$prefix}primary);
+          .css-wsp0cs-MultiValueGeneric{
+              color: var(--#{$prefix}white);
+          }
+
+          .css-1u9des2-indicatorSeparator{
+              border-color: var(--#{$prefix}border-color);
+          }
+      }
+  }
+
+  :is(.css-qbdosj-Input, .css-1dimb5e-singleValue) {
+      color: var(--#{$prefix}body-color);
+  }
+
+  .css-t3ipsp-control{
+      background-color: var(--#{$prefix}secondary-bg);
+      color: var(--#{$prefix}body-color);
+      border-color: var(--#{$prefix}border-color);
+
+      .css-1p3m7a8-multiValue {
+          color: var(--#{$prefix}white);
+          background-color: var(--#{$prefix}primary);
+          .css-wsp0cs-MultiValueGeneric{
+              color: var(--#{$prefix}white);
+          }
+
+          .css-1u9des2-indicatorSeparator{
+              border-color: var(--#{$prefix}border-color);
+          }
+      }
+  }
+
+  .css-1nmdiq5-menu{
+      background-color: var(--#{$prefix}secondary-bg);
+      color: var(--#{$prefix}body-color);
+      border-color: var(--#{$prefix}border-color);
+      .css-d7l1ni-option {
+          color: $white;
+          background-color: var(--#{$prefix}primary);
+          &:hover, &:active, &:focus {
+              background-color: var(--#{$prefix}primary);
+          }
+      }
+  }
+}
+
+
+
+
+
+// added by ayman
+
+/* Champs de formulaire */
+.form-control {
+  padding: 8px;
+  font-size: 14px;
+  border-radius: 8px;
+  border: 1px solid #ced4da;
+  transition: all 0.3s ease;
+}
