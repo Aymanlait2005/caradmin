@@ -26,7 +26,7 @@ function Login() {
   // 🔹 Redirection si déjà connecté
   useEffect(() => {
     const user = JSON.parse(localStorage.getItem("user"));
-    if (user) navigate("/pages/Home");;
+    if (user) navigate("/pages/dashboard/Dashboard");;
     }, []);
 
   // ✅ Schéma de validation
@@ -53,7 +53,7 @@ function Login() {
           const { token, user } = data;
           localStorage.setItem("token", token);
           localStorage.setItem("user", JSON.stringify(user));
-          navigate("/pages/Home");
+          navigate("/pages/dashboard/Dashboard");
         } else {
           setErrors({ password: "Identifiants incorrects" });
         }

@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 
 // import logos
-import logoSm from "../../assets/images/logo-sm-1.png";
+import logoSm from "../../assets/images/LOUPE copy.png";
 import logoLight from "../../assets/images/logo-light.png";
 import logoDark from "../../assets/images/logolast.png"; 
 // import components
@@ -11,7 +11,6 @@ import SimpleBar from "simplebar-react";
 import "simplebar-react/dist/simplebar.min.css"; 
 import VerticalLayout from "../verticalLayout/VerticalLayout";
 import HorizontalLayout from "../horizontalLayout/HorizontalLayout";
-import TwoColumnLayout from "../twoColumnLayout/TwoColumnLayout";
 
 const Sidebar = ({ layoutType }) => {
 
@@ -23,6 +22,17 @@ const Sidebar = ({ layoutType }) => {
       });
     }
   }, []);
+  useEffect(() => {
+    // ✅ S'assure que l'attribut de layout est défini au montage
+    if (!document.documentElement.getAttribute("data-layout")) {
+      document.documentElement.setAttribute("data-layout", layoutType);
+    }
+  
+    // ✅ Définit une taille par défaut si aucune n'existe
+    if (!document.documentElement.getAttribute("data-sidebar-size")) {
+      document.documentElement.setAttribute("data-sidebar-size", "lg");
+    }
+  }, [layoutType]);
 
   const addEventListenerOnSmHoverMenu = () => {
     if (document.documentElement.getAttribute('data-sidebar-size') === 'sm-hover') {
@@ -73,11 +83,6 @@ const Sidebar = ({ layoutType }) => {
               </ul>
             </Container>
           </div>
-        ) : layoutType === 'twocolumn' ? (
-          <React.Fragment>
-            <TwoColumnLayout layoutType={layoutType} />
-            <div className="sidebar-background"></div>
-          </React.Fragment>
         ) : (
           <React.Fragment>
             <SimpleBar id="scrollbar" className="h-100">

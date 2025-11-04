@@ -7,6 +7,7 @@ const VerticalLayout = (props) => {
   const navData = Navdata().props.children;
   const location = useLocation();
   const path = location.pathname;
+ console.log(navData)
 
   // valeurs par défaut (avant c’était useSelector)
   const leftsidbarSizeType = "lg";

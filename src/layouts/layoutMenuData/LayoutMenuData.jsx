@@ -7,7 +7,7 @@ const Navdata = () => {
 
   // Déterminer le rôle à partir du sessionStorage
   useEffect(() => {
-    const authUser = sessionStorage.getItem("authUser");
+    const authUser = localStorage.getItem('user');
     if (authUser) {
       try {
         const obj = JSON.parse(authUser);
