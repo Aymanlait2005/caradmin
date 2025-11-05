@@ -26,8 +26,18 @@ function Login() {
   // 🔹 Redirection si déjà connecté
   useEffect(() => {
     const user = JSON.parse(localStorage.getItem("user"));
-    if (user) navigate("/pages/dashboard/Dashboard");;
-    }, []);
+    if (user && user.user_type) {
+      const role = user.user_type.toLowerCase();
+
+      if (role === "admin") {
+        navigate("/pages/dashboard/admin/Dashboard");
+      } else if (role === "vendor") {
+        navigate("/pages/dashboard/vendor/Dashboard");
+      } else {
+        navigate("/pages/dashboard/Dashboard");
+      }
+    }
+  }, [navigate]);
 
   // ✅ Schéma de validation
   const formik = useFormik({
@@ -53,7 +63,17 @@ function Login() {
           const { token, user } = data;
           localStorage.setItem("token", token);
           localStorage.setItem("user", JSON.stringify(user));
-          navigate("/pages/dashboard/Dashboard");
+          if (user && user.user_type) {
+            const role = user.user_type.toLowerCase();
+      
+            if (role === "admin") {
+              navigate("/pages/dashboard/admin/Dashboard");
+            } else if (role === "vendor") {
+              navigate("/pages/dashboard/vendor/Dashboard");
+            } else {
+              navigate("/pages/dashboard/Dashboard");
+            }
+          }
         } else {
           setErrors({ password: "Identifiants incorrects" });
         }
